@@ -1,14 +1,25 @@
 from user import User
+
+
 class Database:
+
     users_list = []
 
-    def greetings(self):
+    @staticmethod
+    def greetings():
         print("Welcome to the insurance database app. Choose one of the actions bellow:\n")
 
     def create_user(self):
-        user = User(input("Name: ").title(), input("Surname: ").title(), input("Date of birth [DD.MM.YYYY]: "), input("Phone number: "))
+        user = User(input("Name: ").title(),
+                    input("Surname: ").title(),
+                    input("Date of birth [DD.MM.YYYY]: "),
+                    input("Phone number: "))
         self.users_list.append(user)
-        print("You have created the user:\nName: {0}\nSurname: {1}\nDate of birth: {2}\nPhone number: {3}".format(user.name, user.surname, user.date_of_birth, user.phone_number))
+        print("You have created the user:\n"
+              "Name: {0}\n"
+              "Surname: {1}\n"
+              "Date of birth: {2}\n"
+              "Phone number: {3}".format(user.name, user.surname, user.date_of_birth, user.phone_number))
 
     def list_all_users(self):
         enum_dtbz = enumerate(self.users_list, start=1)
@@ -23,7 +34,10 @@ class Database:
         searching = input("Enter the keyword:\n").upper()
 
         for user in self.users_list:
-            if (user.name.upper() == searching or user.surname.upper() == searching or user.date_of_birth == searching or user.phone_number == searching):
+            if (user.name.upper() == searching
+                    or user.surname.upper() == searching
+                    or user.date_of_birth == searching
+                    or user.phone_number == searching):
                 print(user.name, user.surname, user.date_of_birth, user.phone_number)
 
     def remove_user(self):
